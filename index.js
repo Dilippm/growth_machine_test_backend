@@ -6,6 +6,7 @@ const PORT = 5000;
 require("dotenv").config();
 const CLIENT_URL = process.env.CLIENT_URL;
 const MONGO_URL = process.env.MONGO_URL;
+
 // Middleware
 app.use(express.json());
 const corsOptions = {
@@ -30,13 +31,9 @@ mongoose
     console.error("Error connecting to MongoDB:", error);
   });
 
-// Define your API routes and controllers here
+// Define API routes and controllers 
 
-// Example route:
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
-});
-
+app.use('/api', require('./router/router')); 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
